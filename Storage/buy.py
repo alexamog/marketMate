@@ -23,7 +23,7 @@ class Buy(Base):
         self.item_price = item_price
         self.buy_qty = buy_qty
         self.trace_id = trace_id
-        self.date_created = datetime.datetime.now() # Sets the date/time record is created
+        self.date_created = datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ') # Sets the date/time record is created
 
     def to_dict(self):
         # TODO create a dict, and assign object properties to your dict

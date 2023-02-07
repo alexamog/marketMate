@@ -51,13 +51,13 @@ def get_buys(timestamp):
     session = DB_SESSION()
     # TODO query the session and filter by Buy.date_created >= timestamp
     # e.g. rows = session.query(Buy).filter etc...
-    rows = session.query(Buy).filter(Buy.date_created > timestamp)
-
+    rows = session.query(Buy).filter(Buy.date_created >= timestamp)
     # TODO create a list to hold dictionary representations of the rows
     # e.g. data = []
     data = []
     # TODO loop through the rows, appending each row (use .to_dict() on each row) to 'data'
     for row in rows:
+        print(row.to_dict())
         data.append(row.to_dict())
     # TODO close the session
     session.close()
