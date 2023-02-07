@@ -1,0 +1,6 @@
+version: 1
+user: "root"
+password: 123
+hostname: "localhost"
+port: 3306
+db: "events"
