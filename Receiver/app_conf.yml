@@ -3,3 +3,7 @@ buy:
   url: http://localhost:8090/buy
 sell:
   url: http://localhost:8090/sell
+events:
+  hostname: localhost
+  port: 29092
+  topic: events

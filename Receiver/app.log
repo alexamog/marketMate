@@ -95,3 +95,14 @@ RECEIVER :: DEBUG – received event buy with trace id 20760e5c-7561-4ab0-a7a7-6
 RECEIVER :: DEBUG – Received response with trace id 20760e5c-7561-4ab0-a7a7-67a6c17041f1, status code 201
 RECEIVER :: DEBUG – received event buy with trace id 47af6f29-6316-4ef2-8fee-0ad49d28e38a
 RECEIVER :: DEBUG – Received response with trace id 47af6f29-6316-4ef2-8fee-0ad49d28e38a, status code 201
+RECEIVER :: DEBUG – Received sell event with trace id 152f2ca8-29ab-4e0d-a44f-2e009f3bc382
+RECEIVER :: DEBUG – Received sell event with trace id 51eec961-b14f-4b4c-8816-de470bffd69d
+RECEIVER :: DEBUG – Received sell event with trace id 06d08d91-f508-493a-8110-46a2a3d1f595
+RECEIVER :: DEBUG – Received sell event with trace id b9f2f2d4-1772-44ae-9232-0b4ae0ce7db8
+RECEIVER :: DEBUG – Received buy event with trace id 765ced14-441d-4892-aa87-b1a954b04236
+RECEIVER :: DEBUG – Received buy event with trace id e02ff6b4-1b8c-4cfa-8c49-a10df6a2866e
+RECEIVER :: DEBUG – Received buy event with trace id 3ab9fc98-668d-425a-8321-adf1a19f1dee
+RECEIVER :: DEBUG – Received buy event with trace id 31fbaccd-15d8-4a8c-ae8e-e76210a74567
+RECEIVER :: DEBUG – Received buy event with trace id 66c97ecc-272c-4b4c-975f-137b0082c52f
+RECEIVER :: DEBUG – Received sell event with trace id d03b29bf-8df9-44b2-958d-2934fb160159
+RECEIVER :: DEBUG – Received sell event with trace id 93676159-dc7b-43e3-97f7-f6c582504bee

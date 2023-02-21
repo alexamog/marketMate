@@ -4,3 +4,7 @@ password: 123
 hostname: "localhost"
 port: 3306
 db: "events"
+events:
+  hostname: localhost
+  port: 29092
+  topic: events
