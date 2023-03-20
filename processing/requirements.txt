@@ -3,3 +3,4 @@ swagger-ui-bundle
 datetime
 SQLAlchemy
 apscheduler
+flask_cors
