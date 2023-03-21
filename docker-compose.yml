@@ -1,5 +1,14 @@
 version: '3'
 services:
+  dashboard:
+    build: ./dashboard
+    ports:
+      - "5173:5173"
+    networks:
+      events-network:
+        ipv4_address: 10.5.0.10
+    depends_on:
+      - "processing"
   mysql:
       image: mysql
       command: mysqld --default-authentication-plugin=mysql_native_password    
@@ -18,6 +27,8 @@ services:
       networks:
         events-network:
           ipv4_address: 10.5.0.8
+      depends_on:
+        - "kafka"
   storage:
     build: ./Storage
     ports:
@@ -35,6 +46,8 @@ services:
     networks:
       events-network:
         ipv4_address: 10.5.0.4
+    depends_on:
+      - "kafka"
   processing:
     build: ./processing
     ports:
