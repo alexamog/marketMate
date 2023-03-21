@@ -74,6 +74,7 @@ def populate_stats():
     total_buys = 0
     total_sales = 0
     for row in payload:
+        print(f"AHHHH {row['item_price']}")
         max_buy_price = row['item_price'] if row['item_price'] > max_buy_price else max_buy_price
         total_buys += row["buy_qty"]
 

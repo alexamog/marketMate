@@ -106,3 +106,9 @@ RECEIVER :: DEBUG – Received buy event with trace id 31fbaccd-15d8-4a8c-ae8e-e
 RECEIVER :: DEBUG – Received buy event with trace id 66c97ecc-272c-4b4c-975f-137b0082c52f
 RECEIVER :: DEBUG – Received sell event with trace id d03b29bf-8df9-44b2-958d-2934fb160159
 RECEIVER :: DEBUG – Received sell event with trace id 93676159-dc7b-43e3-97f7-f6c582504bee
+RECEIVER :: DEBUG – Received sell event with trace id 3af0ff21-0c1d-4d29-bf40-d04bd22f30b6
+RECEIVER :: DEBUG – Received sell event with trace id ee76bc01-d6cd-4023-af0a-f80cb37289db
+RECEIVER :: DEBUG – Received buy event with trace id 4793c63c-281c-4e29-b1be-1e8e5adc7af3
+RECEIVER :: DEBUG – Received buy event with trace id 798af760-7183-40f9-b09b-7c113ba032d9
+RECEIVER :: DEBUG – Received sell event with trace id dff0edfa-84a2-48c5-8091-c87cc119226e
+RECEIVER :: DEBUG – Received sell event with trace id 68ef3ec2-a751-4240-83f2-ad43b1c4f511
