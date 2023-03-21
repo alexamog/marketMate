@@ -1,0 +1,83 @@
+version: '3'
+services:
+  mysql:
+      image: mysql
+      command: mysqld --default-authentication-plugin=mysql_native_password    
+      restart: always
+      ports:
+        - "3306:3306"
+      environment:
+        MYSQL_ROOT_PASSWORD: example
+      volumes:
+        - events-db:/var/lib/mysql
+        - ./mysql/data.sql:/docker-entrypoint-initdb.d/data.sql:ro
+      healthcheck:
+        test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+        timeout: 5s
+        retries: 10
+      networks:
+        events-network:
+          ipv4_address: 10.5.0.8
+  storage:
+    build: ./Storage
+    ports:
+      - "8090:8090"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      events-network:
+        ipv4_address: 10.5.0.3
+  receiever:
+    build: ./Receiver
+    ports:
+      - "8080:8080"
+    networks:
+      events-network:
+        ipv4_address: 10.5.0.4
+  processing:
+    build: ./processing
+    ports:
+      - "8100:8100"
+    depends_on:
+    - "storage"
+    networks:
+      events-network:
+        ipv4_address: 10.5.0.5
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 22181:2181
+    networks:
+      events-network:
+        ipv4_address: 10.5.0.6
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    ports:
+      - 29092:29092
+    networks:
+      events-network:
+        ipv4_address: 10.5.0.7
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 10.5.0.6:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://10.5.0.7:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+networks:
+  events-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/24
+          gateway: 10.5.0.1
+
+volumes:
+  events-db:

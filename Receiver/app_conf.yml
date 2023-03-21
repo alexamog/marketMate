@@ -1,9 +1,9 @@
 version: 1
 buy:
-  url: http://localhost:8090/buy
+  url: http://10.5.0.3:8090/buy
 sell:
-  url: http://localhost:8090/sell
+  url: http://10.5.0.3:8090/sell
 events:
-  hostname: localhost
+  hostname: 10.5.0.7
   port: 29092
   topic: events

@@ -67,19 +67,20 @@ def populate_stats():
     else:
         result = {'max_buy_price': 0.0, 'num_buys': 0, 'max_sell_price': 0.0, 'num_sells': 0, 'last_updated': None}
     # TODO call the /buy GET endpoint of storage, passing last_updated
-    rows = requests.get(f"http://localhost:8090/buy?timestamp={last_updated}")
+    buy_endpoint = app_config["buy_url"]
+    rows = requests.get(f"{buy_endpoint}?timestamp={last_updated}")
     # TODO convert result to a json object, loop through and calculate max_buy_price of all recent records
     payload = rows.json()
     max_buy_price = 0.00
     total_buys = 0
     total_sales = 0
     for row in payload:
-        print(f"AHHHH {row['item_price']}")
         max_buy_price = row['item_price'] if row['item_price'] > max_buy_price else max_buy_price
         total_buys += row["buy_qty"]
 
     # TODO call the /sell GET endpoint of storage, passing last_updated
-    rows_sell = requests.get(f"http://localhost:8090/sell?timestamp={last_updated}")
+    sell_endpoint = app_config["sell_url"]
+    rows_sell = requests.get(f"{sell_endpoint}?timestamp={last_updated}")
     payload_sells = rows_sell.json()
     # TODO convert result to a json object, loop through and calculate max_sell_price of all recent records
     max_sell_price = 0.00
