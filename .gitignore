@@ -1,4 +1,5 @@
 env
+*.pem
 node_modules
 __pycache__
 # Logs
