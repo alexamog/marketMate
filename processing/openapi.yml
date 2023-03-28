@@ -33,6 +33,16 @@ paths:
                 properties:
                   message:
                     type: string
+  /health:
+    get:
+      tags:
+        - devices
+      summary: Returns 200
+      operationId: app.health
+      description: Returns 200
+      responses:
+        '200':
+          description: Returned status
 components:
   schemas:
     Stat:

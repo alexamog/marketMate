@@ -29,6 +29,9 @@ def get_latest_stats():
     # TODO if result is empty, return NoContent, 201
     return NoContent, 201
 
+def health():
+    return NoContent, 200
+
 def populate_stats():
     #   IMPORTANT: all stats calculated by populate_stats must be CUMULATIVE
     # 
@@ -69,6 +72,7 @@ def populate_stats():
     # TODO call the /buy GET endpoint of storage, passing last_updated
     buy_endpoint = app_config["buy_url"]
     rows = requests.get(f"{buy_endpoint}?timestamp={last_updated}")
+    
     # TODO convert result to a json object, loop through and calculate max_buy_price of all recent records
     payload = rows.json()
     max_buy_price = 0.00
@@ -114,7 +118,7 @@ with open('log_conf.yml', 'r') as f:
     logging.config.dictConfig(log_config)
 
 logger = logging.getLogger('basic')
-CORS(app.app)
+CORS(app.app    )
 if __name__ == "__main__":
     init_scheduler()
     app.run(port=8100, use_reloader=False)

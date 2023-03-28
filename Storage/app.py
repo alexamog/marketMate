@@ -166,6 +166,9 @@ def sell(body):
     pass
 # end
 
+def health():
+    return NoContent, 200
+
 def get_sells(timestamp):
  # TODO create a DB SESSION
     session = DB_SESSION()

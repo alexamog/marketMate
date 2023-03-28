@@ -7,8 +7,13 @@ services:
     networks:
       events-network:
         ipv4_address: 10.5.0.10
-    depends_on:
-      - "processing"
+  health:
+    build: ./health
+    ports:
+      - "8110:8110"
+    networks:
+      events-network:
+        ipv4_address: 10.5.0.25
   mysql:
       image: mysql
       command: mysqld --default-authentication-plugin=mysql_native_password    
