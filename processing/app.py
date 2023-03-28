@@ -75,7 +75,7 @@ def populate_stats():
     total_buys = 0
     total_sales = 0
     for row in payload:
-        if row['item_price']:
+        if type(row['item_price']) == float:
             max_buy_price = row['item_price'] if row['item_price'] > max_buy_price else max_buy_price
             total_buys += row["buy_qty"]
 
@@ -86,7 +86,7 @@ def populate_stats():
     # TODO convert result to a json object, loop through and calculate max_sell_price of all recent records
     max_sell_price = 0.00
     for row in payload_sells:
-        if row['item_price']:
+        if type(row['item_price']) == float:
             max_sell_price = row['item_price'] if row['item_price'] > max_sell_price else max_sell_price
             total_sales += row["sell_qty"]
     # TODO write a new Stats record to stats.sqlite using timestamp and the statistics you just generated
