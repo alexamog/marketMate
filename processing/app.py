@@ -72,25 +72,23 @@ def populate_stats():
     # TODO convert result to a json object, loop through and calculate max_buy_price of all recent records
     payload = rows.json()
     max_buy_price = 0.00
+    max_sell_price = 0.00
     total_buys = 0
     total_sales = 0
     for row in payload:
-        if row['item_price']:
-            max_buy_price = row['item_price'] if row['item_price'] > max_buy_price else max_buy_price
-            total_buys += row["buy_qty"]
-        raise TypeError("Nothing to process.")
+        if row['item_price'] > max_buy_price:
+            max_buy_price = row['item_price']
+        total_buys += row["buy_qty"]
 
     # TODO call the /sell GET endpoint of storage, passing last_updated
     sell_endpoint = app_config["sell_url"]
     rows_sell = requests.get(f"{sell_endpoint}?timestamp={last_updated}")
     payload_sells = rows_sell.json()
     # TODO convert result to a json object, loop through and calculate max_sell_price of all recent records
-    max_sell_price = 0.00
     for row in payload_sells:
-        if row['item_price']:
-            max_sell_price = row['item_price'] if row['item_price'] > max_sell_price else max_sell_price
-            total_sales += row["sell_qty"]
-        raise TypeError("Nothing to process.")
+        if row['item_price'] > max_sell_price:
+            max_sell_price = row['item_price']
+        total_sales += row["sell_qty"]
     # TODO write a new Stats record to stats.sqlite using timestamp and the statistics you just generated
     stat_obj = Stats(max_buy_price,total_buys,max_sell_price,total_sales,time_stamp)
     # TODO add, commit and optionally close the session
