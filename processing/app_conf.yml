@@ -1,5 +1,5 @@
 version: 1
 filename: stats.sqlite
 period: 5
-sell_url: http://10.5.0.3:8090/sell
-buy_url: http://10.5.0.3:8090/buy
+sell_url: http://54.218.122.226/storage/sell
+buy_url: http://54.218.122.226/storage/buy
