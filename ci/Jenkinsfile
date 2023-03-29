@@ -6,18 +6,19 @@ pipeline {
                 sh 'pip install -r requirements.txt'
             }
         }
-        stage('Python Lint') {
-            steps {
-                script {
-                    def dirs = sh(script: 'ls -d */', returnStdout: true).trim().split()
-                    for (dir in dirs) {
-                        def pythonFiles = sh(script: "find ${dir} -name '*.py'", returnStdout: true).trim().split()
-                    if (pythonFiles.size() > 0) {
-                        sh 'python3 -m pylint --fail-under=5 ${pythonFiles}'
-                    }
-                    }
+stage('Python Lint') {
+    steps {
+        script {
+            def dirs = sh(script: 'ls -d */', returnStdout: true).trim().split()
+            for (dir in dirs) {
+                def pythonFiles = sh(script: "find ${dir} -name '*.py'", returnStdout: true).trim().split()
+                if (pythonFiles.size() > 0) {
+                    sh "python3 -m pylint --fail-under=5 ${pythonFiles.join(' ')}"
                 }
             }
         }
+    }
+}
+
     }
 }
