@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        stage('Python Lint') {
+            steps {
+                sh 'python3 -m pylint --fail-under=5 *.py'
+            }
+        }
+    }
+}
