@@ -1,0 +1,10 @@
+connexion
+requests
+swagger-ui-bundle
+apscheduler
+flask_cors
+datetime
+SQLAlchemy
+mysql-connector-python
+pymysql
+pykafka
