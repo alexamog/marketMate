@@ -37,6 +37,7 @@ def process_event(event, endpoint):
 
 # Endpoints
 
+
 def buy(body):
     process_event(body, 'buy')
     return NoContent, 201
