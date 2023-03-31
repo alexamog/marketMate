@@ -3,7 +3,7 @@ import {useState } from 'react'
 const Stats = () => {
     const [event, setEvent] = useState([])
     const checkStatus = () => {
-        fetch('http://54.218.122.226/health/check')
+        fetch('http://localhost:8110/check')
         .then(res => res.json())
         .then(res => { 
             setEvent(res)
