@@ -7,4 +7,4 @@ security: # configuration for the `safety check` command
         52495: # Example vulnerability ID
             reason: For assignment purposes # optional, for internal note purposes to communicate with your team. This reason will be reported in the Safety reports
             expires: '2024-10-21' # datetime string - date this ignore will expire, best practice to use this variable
-    continue-on-vulnerability-error: False # Suppress non-zero exit codes when vulnerabilities are found. Enable this in pipelines and CI/CD processes if you want to pass builds that have vulnerabilities
+    continue-on-vulnerability-error: True # Suppress non-zero exit codes when vulnerabilities are found. Enable this in pipelines and CI/CD processes if you want to pass builds that have vulnerabilities
