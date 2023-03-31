@@ -34,6 +34,7 @@ pipeline {
                 }
                 steps {
                     script {
+                        def dirs = sh(script: 'ls -d */', returnStdout: true).trim().split()
                         for (dir in dirs) {
                         if (fileExists("${dir}/Dockerfile")) {
                             withCredentials([string(credentialsId: 'DockerHub', variable: 'TOKEN')]) {
