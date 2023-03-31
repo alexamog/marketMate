@@ -22,7 +22,10 @@ pipeline {
         }
         stage('Vulnerabilities scanning') {
             steps{
-                sh 'safety check'
+                script{
+                    sh 'pip install --upgrade safety'
+                    sh 'safety check'
+                }
             }
         }
     }
