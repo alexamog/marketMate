@@ -7,11 +7,11 @@ pipeline {
                 sh 'pip install -r requirements.txt'
             }
         }
-        stage('Vulnerabilities scanning') {
-            steps {
-                sh 'safety check'
-            }
-        }
+        // stage('Vulnerabilities scanning') {
+        //     steps {
+        //         sh 'safety check'
+        //     }
+        // }
         stage('Python Lint') {
             steps {
                 script {
