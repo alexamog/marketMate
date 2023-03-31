@@ -21,10 +21,17 @@ pipeline {
             }
         }
         stage('Vulnerabilities scanning') {
-            steps{
-                script{
+            steps {
+                script {
                     sh 'pip install --upgrade safety'
                     sh 'safety check'
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    sh 'echo hi'
                 }
             }
         }
