@@ -36,7 +36,7 @@ pipeline {
                     script {
                         def dirs = sh(script: 'ls -d */', returnStdout: true).trim().split()
                         for (dir in dirs) {
-                        def repoName = dir.replaceAll("/", "")
+                        def repoName = dir.replaceAll("/", "").toLowerCase()
                         if (fileExists("${dir}/Dockerfile")) {
                             withCredentials([string(credentialsId: 'DockerHub', variable: 'TOKEN')]) {
                                 sh "docker login -u 'alexamog' -p '$TOKEN' docker.io"
