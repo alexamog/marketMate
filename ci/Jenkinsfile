@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Vulnerabilities scanning') {
             steps{
-                sh 'safety check'
+                sh 'python3 -m safety check'
             }
         }
     }
