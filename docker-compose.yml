@@ -1,14 +1,14 @@
 version: '3'
 services:
   dashboard:
-    build: ./dashboard
+    image: alexamog/dashboard:latest
     ports:
       - "5173:5173"
     networks:
       events-network:
         ipv4_address: 10.5.0.10
   health:
-    build: ./health
+    image: alexamog/health:latest
     ports:
       - "8110:8110"
     networks:
@@ -35,7 +35,7 @@ services:
       depends_on:
         - "kafka"
   storage:
-    build: ./Storage
+    image: alexamog/storage:latest
     ports:
       - "8090:8090"
     depends_on:
@@ -45,7 +45,7 @@ services:
       events-network:
         ipv4_address: 10.5.0.3
   receiever:
-    build: ./Receiver
+    image: alexamog/receiver:latest
     ports:
       - "8080:8080"
     networks:
@@ -54,7 +54,7 @@ services:
     depends_on:
       - "kafka"
   processing:
-    build: ./processing
+    image: alexamog/processing:latest
     ports:
       - "8100:8100"
     depends_on:
