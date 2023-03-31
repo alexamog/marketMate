@@ -40,7 +40,7 @@ pipeline {
                         if (fileExists("${dir}/Dockerfile")) {
                             withCredentials([string(credentialsId: 'DockerHub', variable: 'TOKEN')]) {
                                 sh "docker login -u 'alexamog' -p '$TOKEN' docker.io"
-                                sh "docker build -t ${repoName}:latest --tag alexamog/${repoName}:latest ."
+                                sh "docker build . -t alexamog/${repoName}:latest"
                                 sh "docker push alexamog/${repoName}:latest"
                             }
                         }
