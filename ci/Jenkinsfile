@@ -28,5 +28,23 @@ pipeline {
                 }
             }
         }
+        stage('Package') {
+                when {
+                    expression { env.GIT_BRANCH == 'origin/main' }
+                }
+                steps {
+                    script {
+                        for (dir in dirs) {
+                        if (fileExists("${dir}/Dockerfile")) {
+                            withCredentials([string(credentialsId: 'DockerHub', variable: 'TOKEN')]) {
+                                sh "docker login -u 'alexamog' -p '$TOKEN' docker.io"
+                                sh "docker build -t ${dir}:latest --tag alexamog/${dir}:latest ."
+                                sh "docker push alexamog/${dir}:latest"
+                            }
+                        }
+                        }
+                    }
+                }
+        }
     }
 }
