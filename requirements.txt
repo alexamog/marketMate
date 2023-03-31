@@ -8,4 +8,4 @@ SQLAlchemy
 mysql-connector-python
 pymysql
 pykafka
-pip-audit
+safety check
