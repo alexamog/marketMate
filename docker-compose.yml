@@ -1,14 +1,14 @@
 version: '3'
 services:
   dashboard:
-    image: alexamog/dashboard:latest
+    build: "./dashboard"
     ports:
       - "5173:5173"
     networks:
       events-network:
         ipv4_address: 10.5.0.10
   health:
-    image: alexamog/health:latest
+    build: "./health"
     ports:
       - "8110:8110"
     networks:
