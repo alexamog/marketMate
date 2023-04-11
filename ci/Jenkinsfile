@@ -1,2 +1,0 @@
-@Library('ci_functions@main') _
-alex_build()
