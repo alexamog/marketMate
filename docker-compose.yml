@@ -35,7 +35,7 @@ services:
       depends_on:
         - "kafka"
   storage:
-    image: alexamog/storage:latest
+    build: "./Storage"
     ports:
       - "8090:8090"
     depends_on:
@@ -45,7 +45,7 @@ services:
       events-network:
         ipv4_address: 10.5.0.3
   receiever:
-    image: alexamog/receiver:latest
+    build: "./Receiver"
     ports:
       - "8080:8080"
     networks:
@@ -54,7 +54,7 @@ services:
     depends_on:
       - "kafka"
   processing:
-    image: alexamog/processing:latest
+    build: "./processing"
     ports:
       - "8100:8100"
     depends_on:
